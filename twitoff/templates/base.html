@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+        <head>
+                <title>
+                  Twitoff - {{title}}
+                </title>
+
+        </head>
+        <body>
+                <font color="grey"><h1>TwitOff!
+                <img src="https://images.shulcloud.com/111/uploads/Yael/Chagim/celebration-kiddush-220x220.jpg" alt="celebration logo" height="50" width="50">
+                <br>
+                <img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" alt="Twitter logo" height="20" width="20">
+                <img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" alt="Twitter logo" height="20" width="20">
+                <img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" alt="Twitter logo" height="20" width="20">
+                <img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" alt="Twitter logo" height="20" width="20">
+                <img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" alt="Twitter logo" height="20" width="20">
+                <img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" alt="Twitter logo" height="20" width="20">
+                </h1>
+
+                {% block content %}
+                <div>
+                <font color="grey"><font size=1>
+                  <nav>
+                    <div class="menu">
+                      <a href="/update" class="button warning">Update User List</a>
+                    </div>
+                <h3>
+                 Enter the @username to see their tweets.
+               </h3>
+                <form action="/user" method="post">
+                        <input type="text" name="user_name" placeholder="User to add">
+                        <input type="submit" name="Add User">
+                </form>
+
+                <font color="grey"><font size=1>
+                <h3>
+                 Select the users and enter the text for prediction.
+               </h3>
+                <form action="/compare" method="post">
+                  <select name="user1">
+                    {% for user in users %}
+                    <option value="{{ user.name }}">{{ user.name }}</option>
+                    {% endfor %}
+                  </select>
+                  <select name="user2">
+                    {% for user in users %}
+                    <option value="{{ user.name }}">{{ user.name }}</option>
+                    {% endfor %}
+                  </select>
+                  <input type="text" name="tweet_text" placeholder="Tweet text to predict">
+                  <input type="submit" value="Compare Users">
+                </form>
+              </div>
+
+              <div>
+                <h2>Twitter Users</h2>
+                {% for user in users %}
+                <a href="/user/{{ user.name }}"><span class="stack">{{ user.name }}</span></a>
+                {% endfor %}
+                
+              </div>
+
+
+
+                {% endblock %}
+
+
+        </body>
+</html>

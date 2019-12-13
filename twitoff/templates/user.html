@@ -1,0 +1,19 @@
+{% extends "base.html"%}
+{% block content %}
+
+<nav>
+  <div class="menu">
+    <a href="/" class="button warning">Go Back</a>
+  </div>
+</nav>
+
+<h2><font color="black">User: <font color="blue">@{{ title }} </h2>
+<font color="green"><p>{{ message }}</p>
+<font color="red"><p>Here are ther latest tweets.</p>
+<ul>
+{% for tweet in tweets %}
+<font color="black"><li>{{ tweet.id }} : <font color="grey">{{ tweet.text }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
